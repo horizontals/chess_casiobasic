@@ -57,6 +57,7 @@ a=1
 b=1
 c=0
 
+
 while 1     #key cycle while
     g=0
     do
@@ -125,8 +126,8 @@ while 1     #key cycle while
                 r=w
                 mat a[s,t]=0
                 w=0
-                locate u,v,#######w########
                 locate p,q,#########r##########
+                locate u,v,#######w########
                 if a=1      #game record
                 then
                     list x[b]=  10000*r + 1000*t + 100*(9-s) + 10*o + (9-n)
@@ -139,6 +140,7 @@ while 1     #key cycle while
                 locate p,q,"*"
             ifend
         ifend       # 4 pattern process
+    ifend
     ifend       #process for each key
 
 
