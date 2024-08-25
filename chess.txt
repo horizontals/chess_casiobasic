@@ -68,7 +68,7 @@ while 1     #key cycle while
     do
         isz g
         g==100 => prog "s chess"
-        !d and g==200 => locate p,q,"*"
+        !d and g==200 => locate p,q,"triangle"
         g==200 => g=0
         getkey -> k
     doend k==0
@@ -137,7 +137,7 @@ while 1     #key cycle while
             then        #pick successful
                 nopqr -> stuvw
                 d=0
-                locate p,q,"o"
+                locate p,q,"triangle"
             else        #pick unsuccessful
                 locate p,q,"*"
             ifend
