@@ -29,7 +29,8 @@ mat a[y,x]=x,y
 情報は基本的にmatrixの行列の順に保存
 表示するときや、記譜するときはその時に変換する
 
-
+abcd  g   k  nopqrstuvw
+    ef hij lm          xyz
 
 
 """
@@ -40,7 +41,7 @@ mat a[y,x]=x,y
 
         RNBQKBN"
 
-locate 16,4,"r"
+locate 16,4,"R"
 
 [[-5,-4,-3,-2,-1,-3,-4,-5]
 [-6,-6,-6,-6,-6,-6,-6,-6]
@@ -66,7 +67,7 @@ while 1     #key cycle while
     g=0
     do
         isz g
-        g==100 => locate p,q,#########r##########
+        g==100 => prog "s chess"
         !d and g==200 => locate p,q,"*"
         g==200 => g=0
         getkey -> k
@@ -78,6 +79,23 @@ while 1     #key cycle while
     else if k==right
     then
         c=1
+    else if k==function
+    then
+        while getkey
+        whileend
+        do
+            getkey -> K
+        doend k==0 or k>=8
+        r=a*K
+        k==7 => r=0
+        mat a[n,o]=r
+        prog "s chess"
+    else if k<=8
+    then
+        r=a*K
+        k==7 => r=0
+        mat a[n,o]=r
+        prog "s chess"
     else
         int(k/10) -> g
         k-10*g -> h
@@ -130,9 +148,9 @@ while 1     #key cycle while
                 r=w
                 mat a[s,t]=0
                 w=0
-                locate p,q,#########r##########
+                prog "s chess"
                 uvw -> pqr
-                locate p,q,#########r##########
+                prog "s chess"
                 if a=1      #game record
                 then
                     list x[b]=  10000*r + 1000*t + 100*(9-s) + 10*o + (9-n)
@@ -145,6 +163,8 @@ while 1     #key cycle while
                 locate p,q,"*"
             ifend
         ifend       # 4 pattern process
+    ifend
+    ifend
     ifend
     ifend       #process for each key
 
@@ -165,7 +185,15 @@ whileend
 ==============s chess===========
 
 r==0 => locate p,q," "
-.
-.
-.
-.
+r==6 => locate p,q,"P"
+r==5 => locate p,q,"R"
+r==4 => locate p,q,"N"
+r==3 => locate p,q,"B"
+r==2 => locate p,q,"Q"
+r==1 => locate p,q,"K"
+r==-6 => locate p,q,"p"
+r==-5 => locate p,q,"r"
+r==-4 => locate p,q,"n"
+r==-3 => locate p,q,"b"
+r==-2 => locate p,q,"9"
+r==-1 => locate p,q,"k"
